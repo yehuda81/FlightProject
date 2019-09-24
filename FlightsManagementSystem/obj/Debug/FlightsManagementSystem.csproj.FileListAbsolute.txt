@@ -1,0 +1,6 @@
+C:\Users\yudal\source\repos\FlightsManagementSystem\FlightsManagementSystem\obj\Debug\FlightsManagementSystem.csprojAssemblyReference.cache
+C:\Users\yudal\source\repos\FlightsManagementSystem\FlightsManagementSystem\obj\Debug\FlightsManagementSystem.csproj.CoreCompileInputs.cache
+C:\Users\yudal\source\repos\FlightsManagementSystem\FlightsManagementSystem\bin\Debug\FlightsManagementSystem.dll
+C:\Users\yudal\source\repos\FlightsManagementSystem\FlightsManagementSystem\bin\Debug\FlightsManagementSystem.pdb
+C:\Users\yudal\source\repos\FlightsManagementSystem\FlightsManagementSystem\obj\Debug\FlightsManagementSystem.dll
+C:\Users\yudal\source\repos\FlightsManagementSystem\FlightsManagementSystem\obj\Debug\FlightsManagementSystem.pdb

@@ -1,0 +1,16 @@
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\bin\Debug\TestFlightProject.dll
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\bin\Debug\TestFlightProject.pdb
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\bin\Debug\FlightsManagementSystem.dll
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\bin\Debug\FlightsManagementSystem.pdb
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\obj\Debug\TestFlightProject.csprojAssemblyReference.cache
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\obj\Debug\TestFlightProject.csproj.CoreCompileInputs.cache
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\obj\Debug\TestFlightProject.csproj.CopyComplete
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\obj\Debug\TestFlightProject.dll
+C:\Users\yudal\source\repos\FlightsManagementSystem\TestFlightProject\obj\Debug\TestFlightProject.pdb
