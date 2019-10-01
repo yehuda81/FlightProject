@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FlightsManagementSystem;
 using System.Collections.Generic;
@@ -24,12 +24,12 @@ namespace TestFlightProject
         [TestMethod]
         public void DeleteData()
         {
-            Test.DeleteAllData();
+            Test.DeleteAllData();            
         }
         [TestMethod]
         public void CreateNewCountry()
         {            
-            Admin.CreateNewCountry(AdminLogin, country);
+            Admin.CreateNewCountry(AdminLogin, country);           
         }        
        
         [TestMethod]
@@ -69,6 +69,11 @@ namespace TestFlightProject
             Customer customer = Admin.GetCustomerByUserName(AdminLogin, c.UserName);
             customer.UserName = "YR";
             Admin.UpdateCustomerDetails(AdminLogin, customer);
+        }
+        [TestMethod]
+        public long GetCustomerByUserName(string user)
+        {            
+            return Admin.GetCustomerByUserName(AdminLogin, user).Id;
         }
     }
 }
