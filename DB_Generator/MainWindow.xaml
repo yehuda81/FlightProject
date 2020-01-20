@@ -1,0 +1,44 @@
+﻿<Window x:Class="DB_Generator.MainWindow" WindowStartupLocation="CenterScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DB_Generator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="800">
+    <StackPanel Margin="50,30,50,0" >
+        <StackPanel Orientation="Horizontal"  Height="200" VerticalAlignment="Top">
+        <StackPanel Width="140">
+                <TextBlock Height="30" Padding="4" Text="AirLine Companies" ></TextBlock>
+                <TextBlock Height="30" Padding="4" Text="Customers"></TextBlock>
+                <TextBlock Height="30" Padding="4" Text="Administrators"></TextBlock>
+                <TextBlock Height="30" Padding="4" Text="Flights Per Company"></TextBlock>
+                <TextBlock Height="30" Padding="4" Text="Tickets Per Company"></TextBlock>
+                <TextBlock Height="30" Padding="4" Text="Countries"></TextBlock>
+        </StackPanel>
+            <StackPanel Width="150">
+                <TextBox Height="22" Margin="4" Text="{Binding Companies,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox Height="22" Margin="4" Text="{Binding Customers,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox Height="22" Margin="4" Text="{Binding Administrators,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox Height="22" Margin="4" Text="{Binding Flights,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox Height="22" Margin="4" Text="{Binding Tickets,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                <TextBox Height="22" Margin="4" Text="{Binding Countries,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></TextBox> 
+            </StackPanel>
+            <StackPanel Width="200">
+                <Button x:Name="addBTN" Content="Add To DB" Width="70" Margin="10" Command="{Binding AddCommand}" IsEnabled="{Binding IsEnable, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button x:Name="replaceBTN" Content="Replace DB" Width="70" Margin="10" Command="{Binding ReplaceCommand}" IsEnabled="{Binding IsEnable,AsyncState=PropertyChanged}"/>
+                
+            </StackPanel>
+        </StackPanel>
+        <TextBlock Text="{Binding ElementName=pbStatus, Path=Value, StringFormat={}{0}% complete}" Height="30"></TextBlock>
+        <ProgressBar Grid.ColumnSpan="1" Minimum="0" Maximum="100" Name="pbStatus" Height="30" Value="{Binding BarValue,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"  ></ProgressBar>
+        <TextBlock Height="30" Text=" Logging:" FontSize="16"></TextBlock>
+        <StackPanel>        
+            <TextBlock   Height="30" TextAlignment="Left" FontSize="16" Text="{Binding Countriesmessage,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock   Height="30" TextAlignment="Left" FontSize="16" Text="{Binding Companiesmessage,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock   Height="30" TextAlignment="Left" FontSize="16" Text="{Binding Customersmessage,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock   Height="30" TextAlignment="Left" FontSize="16" Text="{Binding Flightsmessage,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+            <TextBlock   Height="30" TextAlignment="Left" FontSize="16" Text="{Binding Ticketsmessage,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"></TextBlock>
+        </StackPanel>
+    </StackPanel>
+</Window>
