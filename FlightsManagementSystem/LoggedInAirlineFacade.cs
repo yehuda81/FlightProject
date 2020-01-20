@@ -10,7 +10,7 @@ namespace FlightsManagementSystem
     {        
         public void CancelFlight(LoginToken<AirlineCompany> token, Flight flight)
         {
-            if (token != null)
+            if (token.User.Id == flight.AirlineCompanyId)
             {
                 _flightDAO.Remove(flight);
             }            
@@ -18,10 +18,10 @@ namespace FlightsManagementSystem
 
         public void ChangeMyPassword(LoginToken<AirlineCompany> token, string oldPassword, string newPassword)
         {
-            if (token != null)
-            {
-                AirlineCompany company = _airlineDAO.GetAirlineByUsername(token.ToString());
-                if (company.Password == oldPassword)
+            if (token.User != null)
+            {               
+                AirlineCompany company = _airlineDAO.GetAirlineByUsername(token.User.UserName);
+                if (company.Password.ToString() == oldPassword)
                 {
                     company.Password = newPassword;
                     _airlineDAO.Update(company);
@@ -30,13 +30,12 @@ namespace FlightsManagementSystem
                 {
                     throw new WrongPasswordException("Wrong Password");
                 }
-            }            
-            
+            } 
         }
 
         public void CreateFlight(LoginToken<AirlineCompany> token, Flight flight)
         {
-            if (token != null)
+            if (token.User.Id == flight.AirlineCompanyId)
             {
                 _flightDAO.Add(flight);
             }            
@@ -44,7 +43,7 @@ namespace FlightsManagementSystem
 
         public IList<Flight> GetAllFlights(LoginToken<AirlineCompany> token)
         {
-            if (token != null)
+            if (token.User != null)
             {
                 return _flightDAO.GetAll();
             }
@@ -53,7 +52,7 @@ namespace FlightsManagementSystem
 
         public IList<Ticket> GetAllTickets(LoginToken<AirlineCompany> token)
         {
-            if (token != null)
+            if (token.User != null)
             {
                 return _ticketDAO.GetAll();
             }
@@ -62,7 +61,7 @@ namespace FlightsManagementSystem
 
         public void ModifyAirlineDetails(LoginToken<AirlineCompany> token, AirlineCompany airline)
         {
-            if (token != null)
+            if (token.User.Id == airline.Id)
             {
                 _airlineDAO.Update(airline);
             }            
@@ -70,10 +69,11 @@ namespace FlightsManagementSystem
 
         public void UpdateFlight(LoginToken<AirlineCompany> token, Flight flight)
         {
-            if (token != null)
+            if (token.User.Id == flight.AirlineCompanyId)
             {
                 _flightDAO.Update(flight);
             }            
         }
+        
     }
 }

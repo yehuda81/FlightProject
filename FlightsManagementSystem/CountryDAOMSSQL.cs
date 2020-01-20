@@ -36,7 +36,7 @@ namespace FlightsManagementSystem
                 SqlDataReader reader = cmd.ExecuteReader();
                 {
                     while (reader.Read())
-                    {
+                    {                        
                         t.Id = (long)reader["ID"];
                         t.CountryName = (string)reader["COUNTRY_NAME"];
                     }
@@ -48,18 +48,18 @@ namespace FlightsManagementSystem
 
         public Country Get(int id)
         {
-            SqlConnection con = new SqlConnection(AppConfig.CONNECTION_STRING);
-            Country t = new Country();
+            SqlConnection con = new SqlConnection(AppConfig.CONNECTION_STRING);            
             using (con)
             {
                 SqlCommand cmd = new SqlCommand("SELECT_COUNTRY_BY_ID", con);
+                Country t = new Country();
                 cmd.Parameters.Add(new SqlParameter("@id", id));
                 con.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataReader reader = cmd.ExecuteReader();
                 {
                     while (reader.Read())
-                    {
+                    {                       
                         t.Id = (long)reader["ID"];
                         t.CountryName = (string)reader["COUNTRY_NAME"];                        
                     }
@@ -72,8 +72,7 @@ namespace FlightsManagementSystem
         public IList<Country> GetAll()
         {
             SqlConnection con = new SqlConnection(AppConfig.CONNECTION_STRING);
-            List<Country> countries = new List<Country>();
-            Country t = new Country();
+            List<Country> countries = new List<Country>();            
             using (con)
             {
                 con.Open();
@@ -82,6 +81,7 @@ namespace FlightsManagementSystem
                 {
                     while (reader.Read())
                     {
+                        Country t = new Country();
                         t.Id = (long)reader["ID"];
                         t.CountryName = (string)reader["COUNTRY_NAME"];
                         countries.Add(t);
@@ -115,6 +115,19 @@ namespace FlightsManagementSystem
                 SqlCommand cmd = new SqlCommand($"UPDATE_COUNTRY", con);
                 cmd.Parameters.Add(new SqlParameter("@id", t.Id));
                 cmd.Parameters.Add(new SqlParameter("@COUNTRY_NAME", t.CountryName));
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+
+        public void RemoveAll()
+        {
+            SqlConnection con = new SqlConnection(AppConfig.CONNECTION_STRING);
+            using (con)
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand($"DELETE_ALL_COUNTRIES", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.ExecuteNonQuery();
                 con.Close();

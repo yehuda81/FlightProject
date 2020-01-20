@@ -16,22 +16,26 @@ namespace FlightsManagementSystem
         {
         }
 
-        public Ticket(long id, long flightId, long customerId)
+        public Ticket(long flightId, long customerId)
         {            
             FlightId = flightId;
             CustomerId = customerId;
         }
         public static bool operator ==(Ticket a, Ticket b)
         {
-            if (a.Id == b.Id)
+            if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
             {
                 return true;
             }
-            return false;
+            if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
+            {
+                return false;
+            }
+            return a.Id == b.Id;
         }
         public static bool operator !=(Ticket a, Ticket b)
         {
-            return !(a.Id == b.Id);
+            return !(a == b);
         }
         public override string ToString()
         {

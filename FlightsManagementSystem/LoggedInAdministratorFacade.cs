@@ -12,30 +12,30 @@ namespace FlightsManagementSystem
         //CustomerDAOMSSQL Customer = new CustomerDAOMSSQL(); 
         public void CreateNewAirline(LoginToken<Administrator> token, AirlineCompany airline)
         {
-            if (token != null)
+            if (token.User != null)
             {
                 _airlineDAO.Add(airline);
-            }           
+            }
         }
 
         public void CreateNewCustomer(LoginToken<Administrator> token, Customer customer)
         {
-            if (token != null)
+            if (token.User != null)
             {
                 _customerDAO.Add(customer);
             }
         }
         public Customer GetCustomerByUserName(LoginToken<Administrator> token, string user)
         {
-            if (token != null)
+            if (token.User != null)
             {
-               return _customerDAO.GetCustomerByUserame(user);
+                return _customerDAO.GetCustomerByUserame(user);
             }
             return null;
         }
         public void CreateNewCountry(LoginToken<Administrator> token, Country country)
         {
-            if (token != null)
+            if (token.User != null)
             {
                 _countryDAO.Add(country);
             }
@@ -43,15 +43,15 @@ namespace FlightsManagementSystem
 
         public void RemoveAirline(LoginToken<Administrator> token, AirlineCompany airline)
         {
-            if (token != null)
-            {                
+            if (token.User != null)
+            {
                 _airlineDAO.Remove(airline);
             }
         }
 
         public void RemoveCustomer(LoginToken<Administrator> token, Customer customer)
         {
-            if (token != null)
+            if (token.User != null)
             {
                 _customerDAO.Remove(customer);
             }
@@ -59,7 +59,7 @@ namespace FlightsManagementSystem
 
         public void UpdateAirlineDetails(LoginToken<Administrator> token, AirlineCompany airline)
         {
-            if (token != null)
+            if (token.User != null)
             {
                 _airlineDAO.Update(airline);
             }
@@ -67,10 +67,27 @@ namespace FlightsManagementSystem
 
         public void UpdateCustomerDetails(LoginToken<Administrator> token, Customer customer)
         {
-            if (token != null)
+            if (token.User != null)
             {
                 _customerDAO.Update(customer);
-            }            
+            }
+        }
+        public AirlineCompany GetAirlineCompanyById(LoginToken<Administrator> token, int id)
+        {
+            if (token.User != null)
+            {
+                return _airlineDAO.Get(id);
+            }
+            return null;
+        }
+
+        public Customer GetCustomerById(LoginToken<Administrator> token, int id)
+        {
+            if (token.User != null)
+            {
+                return _customerDAO.Get(id);
+            }
+            return null;
         }
     }
 }

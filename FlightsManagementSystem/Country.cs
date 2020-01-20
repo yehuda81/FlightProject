@@ -21,15 +21,19 @@ namespace FlightsManagementSystem
         }
         public static bool operator ==(Country a, Country b)
         {
-            if (a.Id == b.Id)
+            if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
             {
                 return true;
             }
-            return false;
+            if (ReferenceEquals(a, null) || ReferenceEquals(b, null))
+            {
+                return false;
+            }
+            return a.Id == b.Id;
         }
         public static bool operator !=(Country a, Country b)
         {
-            return !(a.Id == b.Id);
+            return !(a == b);
         }
         public override bool Equals(object obj)
         {

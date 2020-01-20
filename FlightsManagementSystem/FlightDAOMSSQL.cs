@@ -56,7 +56,7 @@ namespace FlightsManagementSystem
                 SqlDataReader reader = cmd.ExecuteReader();
                 {
                     while (reader.Read())
-                    {
+                    {                        
                         t.Id = (long)reader["ID"];
                         t.AirlineCompanyId = (long)reader["AIRLINECOMPANY_ID"];
                         t.OriginCountryCode = (long)reader["ORIGIN_COUNTRY_CODE"];
@@ -74,8 +74,7 @@ namespace FlightsManagementSystem
         public IList<Flight> GetAll()
         {
             SqlConnection con = new SqlConnection(AppConfig.CONNECTION_STRING);
-            List<Flight> flights = new List<Flight>();
-            Flight t = new Flight();
+            List<Flight> flights = new List<Flight>();            
             using (con)
             {
                 SqlCommand cmd = new SqlCommand("SELECT_ALL_FLIGHT", con);                
@@ -85,6 +84,7 @@ namespace FlightsManagementSystem
                 {
                     while (reader.Read())
                     {
+                        Flight t = new Flight();
                         t.Id = (long)reader["ID"];
                         t.AirlineCompanyId = (long)reader["AIRLINECOMPANY_ID"];
                         t.OriginCountryCode = (long)reader["ORIGIN_COUNTRY_CODE"];
@@ -99,6 +99,19 @@ namespace FlightsManagementSystem
                 }
             }
         }
+
+        public void RemoveAll()
+        {
+            SqlConnection con = new SqlConnection(AppConfig.CONNECTION_STRING);
+            using (con)
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand($"DELETE_ALL_FLIGHTS", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }    
 
         public Dictionary<Flight, int> GetAllFlightsVacancy()
         {
@@ -131,7 +144,7 @@ namespace FlightsManagementSystem
 
         public Flight GetFlightById(int id)
         {
-            throw new NotImplementedException();
+           return Get(id);
         }
 
         public IList<Flight> GetFlightsByCustomer(Customer customer)

@@ -68,7 +68,7 @@ namespace FlightsManagementSystem
             List<Ticket> tickets = new List<Ticket>();
             using (con)
             {               
-                SqlCommand cmd = new SqlCommand($"SELECT_ALL_TICKETS", con);
+                SqlCommand cmd = new SqlCommand($"SELECT_ALL_TICKETS", con);                
                 con.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
                 SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.Default);

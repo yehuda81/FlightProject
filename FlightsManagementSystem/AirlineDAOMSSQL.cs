@@ -40,7 +40,7 @@ namespace FlightsManagementSystem
                 SqlDataReader reader = cmd.ExecuteReader();
                 {
                     while (reader.Read())
-                    {
+                    {                        
                         t.Id = (long)reader["ID"];
                         t.AirlineName = (string)reader["AIRLINE_NAME"];
                         t.UserName = (string)reader["USER_NAME"];
@@ -66,7 +66,7 @@ namespace FlightsManagementSystem
                 SqlDataReader reader = cmd.ExecuteReader();
                 {
                     while (reader.Read())
-                    {
+                    {                        
                         t.Id = (long)reader["ID"];
                         t.AirlineName = (string)reader["AIRLINE_NAME"];
                         t.UserName = (string)reader["USER_NAME"];
@@ -105,6 +105,20 @@ namespace FlightsManagementSystem
                 }
             }
         }
+
+        public void RemoveAll()
+        {
+            SqlConnection con = new SqlConnection(AppConfig.CONNECTION_STRING);
+            using (con)
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand($"DELETE_ALL_AIRLINESCOMPANIES", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
+        }
+    
 
         public IList<AirlineCompany> GetAllAirlinesByCountry(int countryCode)
         {

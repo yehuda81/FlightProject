@@ -19,6 +19,7 @@ namespace FlightsManagementSystem
         }
         public bool TryAdminLogin(string userName, string password, out LoginToken<Administrator> token)
         {
+            Administrator administrator = new Administrator(userName,password);
             if (userName == AppConfig.ADMIN_USER && password == AppConfig.ADMIN_PASSWORD)
             {
                 token = new LoginToken<Administrator>();

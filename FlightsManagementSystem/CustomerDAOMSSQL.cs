@@ -43,7 +43,7 @@ namespace FlightsManagementSystem
                 SqlDataReader reader = cmd.ExecuteReader();
                 {
                     while (reader.Read())
-                    {
+                    {                        
                         t.Id = (long)reader["ID"];
                         t.FirstName = (string)reader["FIRST_NAME"];
                         t.UserName = (string)reader["USER_NAME"];
@@ -62,16 +62,16 @@ namespace FlightsManagementSystem
         public IList<Customer> GetAll()
         {
             SqlConnection con = new SqlConnection(AppConfig.CONNECTION_STRING);
-            List<Customer> customers = new List<Customer>();
-            Customer t = new Customer();
+            List<Customer> customers = new List<Customer>();            
             using (con)
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand($"SELECT_ALL_COSTOMERS", con);
+                SqlCommand cmd = new SqlCommand($"SELECT_ALL_CUSTOMERS", con);
                 SqlDataReader reader = cmd.ExecuteReader();
                 {
                     while (reader.Read())
                     {
+                        Customer t = new Customer();
                         t.Id = (long)reader["ID"];
                         t.FirstName = (string)reader["FIRST_NAME"];
                         t.UserName = (string)reader["USER_NAME"];
@@ -114,6 +114,19 @@ namespace FlightsManagementSystem
                     con.Close();
                     return t;
                 }
+            }
+        }
+
+        public void RemoveAll()
+        {
+            SqlConnection con = new SqlConnection(AppConfig.CONNECTION_STRING);
+            using (con)
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand($"DELETE_ALL_CUSTOMERS", con);                
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.ExecuteNonQuery();
+                con.Close();
             }
         }
 
